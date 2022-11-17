@@ -1,0 +1,934 @@
+#AREA AND PERIMETER USING CLASSES AND OBJECTS
+
+import java.io.*;
+import java.util.*;
+import java.lang.Math;
+class circle
+{
+double r, area, perimeter;
+public void read()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the radius: ");
+r=sc.nextDouble();
+}
+public void calc()
+{
+area = r * r * Math.PI ;
+perimeter = 2 * r * Math.PI ;
+System.out.println("Area= "+area);
+System.out.println("Perimeter= "+perimeter);
+}
+public static void main(String args[])
+{
+circle ob=new circle();
+ob.read();
+ob.calc();
+}
+}
+
+#DEFAULT  CONSTRUCTOR
+
+class sample
+{
+int n;
+String s;
+sample()
+{
+n=0;
+s=null;
+}
+}
+class Default_constructor
+{
+public static void main(String args[])
+{
+sample ob=new sample();
+System.out.println("N="+ob.n);
+System.out.println("S="+ob.s);
+}
+}
+
+
+#PARAMETERIZED CONSTRUCTOR
+
+class sample
+{
+int n;
+String s;
+sample (int id, String name)
+{
+n=id;
+s=name;
+}
+}
+class Parameterized
+{
+public static void main(String args[])
+{
+sample ob=new sample(206,"Yukesh");
+System.out.println("No ="+ob.n);
+System.out.println("Name="+ob.s);
+}
+}
+
+
+#COPY CONSTRUCTOR
+
+import java.io.*;
+class copy
+{
+int id;
+String name;
+copy(int i, String s)
+{
+id=i;
+name=s;
+}
+copy(copy s)
+{
+id=s.id;
+name=s.name;
+}
+void display()
+{
+System.out.println("ID="+id);
+System.out.println("Name="+name);
+}
+public static void main(String args[])
+{
+copy s1=new copy(206,"Yukesh");
+copy s2=new copy(s1);
+System.out.println("s1.object");
+s1.display();
+System.out.println("s2.object");
+s2.display();
+}
+}
+
+
+#CONSTRUCTOR OVERLOADING
+
+import java.io.*;
+import java.util.*;
+class overloading
+{
+int id,age;
+String name;
+overloading(int i, String s)
+{
+id=i;
+name=s;
+}
+overloading(int i, int a, String s)
+{
+id=i;
+age=a;
+name=s;
+}
+void display()
+{
+System.out.println("Reg No="+id);
+System.out.println("Name="+name);
+System.out.println("Age="+age);
+}
+public static void main(String args[])
+{
+overloading s1=new overloading(01,18,"YUKESH");
+overloading s2=new overloading(02,18,"ARUN);
+s1.display();
+s2.display();
+}
+}
+
+
+#SINGLE INHERITANCE
+
+import java.io.*;
+import java.util.*;
+class parent
+{
+int no,age;
+public void displaybase()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("enter no and age");
+no = sc.nextInt();
+age = sc.nextInt();
+System.out.println("no = "+no+"age = "+age);
+}
+}
+public class single extends parent
+{
+String name;
+public void display()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("enter name");
+name = sc.nextLine();
+System.out.println("name ="+name);
+}
+public static void main(String args[])
+{
+single ch = new single();
+ch.display();
+ch.displaybase();
+}
+} 
+
+
+#MULTILEVEL INHERITANCE
+
+import java.io.*;
+import java.util.*;
+class parent
+{
+int regno;
+String name;
+public void displaybase()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter reg no and name");
+regno=sc.nextInt();
+name=sc.nextLine();
+System.out.println("Reg no="+regno+"Name="+name);
+}
+}
+class child1 extends parent
+{
+int age;
+public void display()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter age");
+age=sc.nextInt();
+System.out.println("Age="+age);
+}
+}
+class multilevel extends child1
+{
+String location;
+public void displaychild()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the location");
+location=sc.nextLine();
+System.out.println("Location="+location);
+}
+public static void main(String args[])
+{
+multilevel ch=new multilevel();
+ch.displaybase();
+ch.display();
+ch.displaychild();
+}
+}
+
+
+#HIERARCHICAL INHERITANCE
+
+import java.io.*;
+import java.util.*;
+class parent
+{
+int no,age;
+public void input()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter reg no and age");
+no=sc.nextInt();
+age=sc.nextInt();
+}
+}
+class derivedA extends parent
+{
+String name;
+public void input1()
+{
+name="Yukesh";
+System.out.println("Name="+name);
+}
+}
+class hierarchical extends parent
+{
+public void display()
+{
+System.out.println("Regno="+no);
+System.out.println("Age="+age);
+}
+public static void main(String args[])
+{
+hierarchical ob1=new hierarchical();
+derivedA ob=new derivedA();
+ob.input1();
+ob1.display();
+}
+}
+
+
+#SUPER KEYWORD TO ACCESS CONSTRUCTOR
+
+import java.io.*;
+class base
+{
+int no,age;
+base(int no,int age)
+{
+this.no=no;
+this.age=age;
+}
+}
+class d1 extends base
+{
+String name;
+d1(int no,int age,String name)
+{
+super(no,age);
+this.name=name;
+}
+public void display()
+{
+System.out.println("No="+no);
+System.out.println("Age="+age);
+System.out.println("Name="+name);
+}
+}
+class superconstructor
+{
+public static void main(String args[])
+{
+d1 d=new d1(206,19,"Yukesh");
+d.display();
+}
+}
+
+
+#SUPER KEYWORD TO ACCESS PROPERTY
+
+import java.io.*;
+class base
+{
+String colour="white";
+}
+class derived extends base
+{
+String colour="blue";
+public void printcolour()
+{
+System.out.println(colour);
+System.out.println(super.colour);
+}
+}
+class superproperty
+{
+public static void main(String args[])
+{
+derived ob=new derived();
+ob.printcolour();
+}
+}
+
+
+#SUPER KEYWORD TO ACCESS METHOD
+
+import java .io.*;
+import java.lang.*;
+class animal
+{
+void eat()
+{
+System.out.println("eating");
+}
+}
+class dog extends animal
+{
+void eat()
+{
+System.out.println("eating bread...");
+}
+void bark()
+{
+System.out.println("barking");
+}
+void work()
+{
+super.eat();
+bark();
+}
+}
+
+class supermethod
+{
+public static void main(String args[])
+{
+dog d=new dog();
+d.work();
+}
+}
+
+
+#ABSTRACT CLASS
+
+import java.io.*;
+import java.util.*;
+abstract class interset
+{
+abstract void calinterset();
+}
+class SBI extends interset
+{
+public void calinterset()
+{
+System.out.println("Interset rate of SBI is 7%");
+}
+}
+class Abstractclass
+{
+public static void main(String args[])
+{
+interset i1;
+i1 = new SBI();
+i1.calinterset();
+}
+}
+
+
+#INTERFACE
+
+import java.io.*;
+interface area
+{
+double pi=3.14;
+double calc(double x,double y);
+}
+class rectangle implements area
+{
+public double calc(double x,double y)
+{
+return(x*y);
+}
+}
+class circle implements area
+{
+public double calc(double x,double y)
+{
+return(pi*x*x);
+}
+}
+class Interface
+{
+public static void main(String args[])
+{
+rectangle r=new rectangle();
+circle c=new circle();
+area a;
+a=r;
+System.out.println("Area of rectangle="+a.calc(15,20));
+a=c;
+System.out.println("Area of circle="+a.calc(15,20));
+}
+}
+
+
+#PACKAGE
+
+package arith ; 
+public class Arith 
+{
+ public int add ( int a , int b) 
+{ 
+return a+b ; 
+} 
+public int sub ( int a , int b) 
+{ 
+return a-b ; 
+} 
+public int mul ( int a , int b) 
+{ 
+return a*b ; 
+} 
+public int div ( int a , int b) 
+{ 
+return a/b ; 
+} 
+} 
+import arith.* ; 
+public class sample { 
+public static void main (String[] args) 
+{ 
+Arith ss = new Arith() ; 
+System. out .println( "Sub:" +ss.sub( 10 , 3 )) ; 
+} 
+}
+
+
+#EXCEPTION HANDLING
+
+class exp 
+{ 
+public static void main(String args[]) 
+{ 
+try 
+{ 
+String a = null; 
+System.out.println( "The length of the string is:" +a.length()) ; } 
+catch (NullPointerException e) 
+{ 
+System.out.println( "Exception caught" ) ; System.out.println( "Exception: \n " +e) ; 
+} 
+} 
+} 
+
+
+#USER-DEFINED EXCEPTION
+
+import java.io.*;
+class MyException extends Exception{
+String s1;
+MyException(String s2){
+s1=s2;
+}
+public String toString(){
+return("Output String="+s1);
+}}
+public class userexcep{
+public static void main(String args[]){
+try{
+throw new MyException("Message");
+}
+catch(MyException exp){
+System.out.println(exp);
+}
+}
+}
+
+
+#IMPLEMENTING RUNNABLE INTERFACE
+
+import java.io.* ; 
+class two implements Runnable { 
+public void run () { 
+int i ; 
+for (i= 1 ; i<= 5 ; i++) { 
+System. out .println(i+ "*2=" +(i* 2 )) ; 
+} } } 
+class three implements Runnable { 
+public void run () { 
+int i ; 
+for (i= 1 ; i<= 5 ; i++) { 
+System. out .println(i+ "*3=" +(i* 3 )) ; 
+} } } 
+class threadrunnable{ 
+public static void main (String[] args) { 
+two tw = new two() ; 
+Thread t1 = new Thread(tw) ; 
+t1.start() ; 
+three th = new three() ; 
+Thread t2 = new Thread(th) ; 
+t2.start() ; 
+} } 
+
+
+
+#CREATING COPY OF OBJECT USING CLONNABLE INTERFACE
+
+class threadclone implements Cloneable { 
+int rno ; 
+String name ; 
+public threadclone( int rno , String name) { 
+this . rno = rno ; 
+this . name = name ; 
+} 
+public Object clone () throws CloneNotSupportedException { 
+return super .clone() ; 
+} 
+public static void main (String[] args) { 
+threadclone s = new threadclone( 206 , "Yukesh" ) ; 
+System. out .println( "original object is:" ) ; 
+System. out .println(s. rno + " " + s. name ) ; 
+try { 
+threadclone s1 = (threadclone)s.clone() ; 
+System. out .println( "cloned object is:" ) ; 
+System. out .println(s1. rno + " " + s1. name ) ; 
+} 
+catch (Exception e) { 
+System. out .println( "excptn caught" ) ; 
+} 
+} 
+} 
+
+
+
+#WRAPPER CLASS
+
+class Wrapper1 
+{ 
+public void primitivetoobj() 
+{ 
+int a=1000; 
+Integer a1=a; //Autoboximg 
+System.out.println("integer obj is:" + a +" "+ a1); 
+float b= 0.01f; 
+Float b1=b; 
+System.out.println("float obj is:" + b+ " "+b1); 
+byte c=100; 
+Byte c1=c; 
+System.out.println("byte obj is:" + c+ " " +c1); 
+char d= 'Y'; 
+Character d1=d; 
+System.out.println("charater obj is:" + d+ " "+d1); 
+short e=10; 
+Short e1=e; 
+System.out.println("short obj is:" + e+ " "+e1); 
+long f=1000000000L; 
+Long f1=f; 
+System.out.println("long obj is:" + f+ " "+f1); 
+double g=0.0001d; 
+Double g1=g; 
+System.out.println("double obj is:" + g+ " "+g1);
+boolean h=true; 
+Boolean h1=h; 
+System.out.println("boolean obj is:" + h +" " +h1); 
+} 
+public void objtoprimitive() 
+{ 
+Integer a1=Integer.valueOf(1000); 
+int a2=a1; //Unboxing 
+System.out.println("value of int variable:" + a1+ " "+ a2);
+Float b1=Float.valueOf(0.01f); 
+float b2=b1;
+System.out.println("value of float variable:" + b1+" "+b2);
+ /*Byte c1=Byte.valueOf(100); 
+byte c2=c1; 
+System.out.println("byte obj to primitive type is:" + c1+" " +c2);*/ 
+Character d1=Character.valueOf('Y'); 
+char d2=d1; 
+System.out.println("value of character variable:" + d1+" "+d2);
+ /*Short e1=new Short(100); 
+short e2=e1; 
+System.out.println("short obj to primitive type is:" + e1+" "+e2);*/ 
+Long f1=Long.valueOf(1000000000L); 
+long f2=f1; 
+System.out.println("value of long variable:" + f1+ " "+f2); 
+Double g1=Double.valueOf(0.0001); 
+double g2=g1; 
+System.out.println("value of double variable:" + g1+ " "+g2); 
+Boolean h1=Boolean.valueOf(true); 
+boolean h2=h1; 
+System.out.println("value of boolean variable:" + h1+" " +h2); } 
+} 
+class Wrapper2 
+{ 
+public static void main(String[] args) 
+{ 
+Wrapper1 w=new Wrapper2(); 
+w.primitivetoobj(); 
+w.objtoprimitive(); 
+} 
+} 
+
+
+#FILE INPUT AND OUTPUT STREAM
+
+import java.io.*;
+class filestream{
+public void fipstream(){
+byte[] ary=new byte[100];
+try{
+InputStream ip=new FileInputStream("input.txt");
+System.out.println("Available size="+ip.available());
+ip.read(ary);
+String data=new String(ary);
+System.out.println("File content="+data);
+ip.close();
+}
+catch(Exception e)
+{
+System.out.println("Error="+e);
+}}
+public void fopstream(){
+String data="Welcome to Sathyabama";
+try{
+OutputStream op = new FileOutputStream( "input.txt" ) ;
+byte[] b=data.getBytes();
+op.write(b);
+op.close();
+System.out.println("Writing Successful");
+}
+catch(Exception e)
+{
+System.out.println("Error="+e);
+}}
+public static void main(String args[]){
+filestream fs=new filestream();
+fs.fipstream();
+fs.fopstream();
+}}
+
+
+#READ AND WRITE CLASS
+
+import java.io.*;
+class readandwrite{
+public void reading(){
+try{
+Reader re=new FileReader("input.txt");
+int data;
+data=re.read();
+while(data!=-1){
+System.out.println((char)data);
+data=re.read();
+}
+re.close();
+}
+catch(Exception e){
+System.out.println("Error="+e);
+}}
+public void writing(){
+try{
+FileWriter wt= new FileWriter("input.txt");
+String data="Welcome to IT department";
+wt.write(data);
+System.out.println("Writing Successful");
+wt.close();
+}
+catch(Exception e){
+System.out.println(e);
+}}
+public static void main(String args[])
+{
+readandwrite rw=new readandwrite();
+rw.reading();
+rw.writing();
+}
+}
+
+
+#DATA INPUT AND DATA OUTPUT STREAM
+
+import java.io.*;
+class datastream{
+public void dipstream() throws IOException{
+InputStream ip=new FileInputStream("input.txt");
+DataInputStream dis=new DataInputStream(ip);
+int count=ip.available();
+byte ary[]=new byte[count];
+dis.read(ary);
+for(byte bt:ary){
+char ch=(char)bt;
+System.out.println(ch);
+}
+dis.close();
+ip.close();
+}
+public void dopstream() throws IOException{
+OutputStream op = new FileOutputStream( "input.txt" ) ;
+DataOutputStream dos = new DataOutputStream(op) ;
+String s="Hello";
+byte[] b=s.getBytes();
+dos.write(b);
+dos.flush();
+dos.close();
+op.close();
+System.out.println("Writing Successful");
+}
+public static void main(String args[]) throws IOException {
+datastream ds=new datastream();
+ds.dipstream();
+ds.dopstream();
+}
+}
+
+
+#LIFE CYCLE OF AN APPLET
+
+import java.applet.*;
+import java.awt.*;
+public class lifeofapplet extends Applet{
+public void init(){
+setBackground(Color.green);
+System.out.println("Init stage is invoked");
+}
+public void start(){
+System.out.println("Start stage is invoked");
+}
+public void paint(Graphics g)
+{
+g.setColor(Color.blue);
+g.drawRect(25,75,30,45);
+}
+public void stop(){
+System.out.println("Stop stage is invoked");
+}
+public void destroy(){
+System.out.println("Applet is destroyed");
+}}
+
+
+
+#PASS PARAMETERS TO AN APPLET
+
+import java.applet.*;
+import java.awt.*;
+public class passapplet extends Applet{
+public void paint(Graphics g){
+String s1=getParameter("sub1");
+String s2=getParameter("sub2");
+g.drawString(s1,50,50);
+g.drawString(s2,100,100);
+}
+}
+
+
+#EVENT HANDLING USING AWT CONTROLS
+
+import java.awt.*;
+public class AwtApp extends Frame{
+AwtApp(){
+Label firstname=new Label("First Name");
+firstname.setBounds(20,50,80,20);
+Label lastname=new Label("Last Name");
+lastname.setBounds(20,80,80,20);
+Label dob=new Label("Date of Birth");
+dob.setBounds(20,110,80,30);
+TextField firstnameTF=new TextField();
+firstnameTF.setBounds(120,50,100,20);
+TextField lastnameTF=new TextField();
+lastnameTF.setBounds(120,80,100,20);
+TextField dobTF=new TextField();
+dobTF.setBounds(120,110,100,20);
+Button sbmt=new Button("Submit");
+sbmt.setBounds(20,160,100,30);
+Button reset=new Button("Reset");
+reset.setBounds(120,160,100,30);
+add(firstname);
+add(lastname);
+add(dob);
+add(firstnameTF);
+add(lastnameTF);
+add(dobTF);
+add(sbmt);
+add(reset);
+setSize(300,300);
+setLayout(null);
+setVisible(true);
+}
+public static void main(String srgs[]){
+AwtApp awt=new AwtApp();
+}}
+
+
+#MOUSE HANDLING
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+public class mouse extends Applet implements MouseListener,MouseMotionListener{
+String msg="";
+int mx=100,my=100;
+Font f;
+public void init(){
+setBackground(Color.green);
+f=new Font("courier",Font.BOLD,45);
+addMouseListener(this);
+addMouseMotionListener(this);
+}
+public void mouseClicked(MouseEvent me){
+msg="Mouse Clicked"; repaint();
+}
+public void mouseEntered(MouseEvent me){
+msg="Mouse Entered"; repaint();
+}
+public void mouseExited (MouseEvent me) { 
+msg = "Mouse Exited" ; 
+repaint() ; 
+} 
+public void mousePressed (MouseEvent me) { 
+msg = "Down" ; 
+mx =me.getX() ; 
+my =me.getY() ; 
+repaint() ; 
+} 
+public void mouseReleased (MouseEvent me) { 
+msg = "Up" ; 
+mx =me.getX() ; 
+my =me.getY() ; 
+repaint() ; 
+} 
+public void mouseMoved (MouseEvent me) { 
+mx =me.getX() ; 
+my =me.getY() ; 
+showStatus( "Mouse Moved from" + mx + " to" + my ) ; 
+repaint();
+} 
+public void mouseDragged (MouseEvent me) 
+{ 
+mx =me.getX() ; 
+my =me.getY() ; 
+showStatus( "Mouse Dragged from" + mx + " to" + my ) ; 
+repaint();
+} 
+public void paint(Graphics g){
+g.setFont(f);
+g.drawString(msg,mx,my);
+}}
+
+
+#KEYBOARD HANDLING
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+public class key extends Applet implements KeyListener
+{
+String msg;
+int kx=100, ky=100;
+public void init()
+{
+setBackground(Color.cyan);
+addKeyListener(this);
+}
+public void keyPressed(KeyEvent ke)
+{
+showStatus(" Key Down");
+}
+public void keyReleased(KeyEvent ke)
+{
+showStatus(" Key Up");
+}
+public void keyTyped(KeyEvent ke)
+{
+msg+=ke.getKeyChar();repaint();
+}
+public void paint(Graphics g)
+{
+g.drawString(msg,kx,ky);
+}
+}
+
+
+#API USING SWING CONTROLS
+
+import javax.swing.* ; 
+import java.applet.* ; 
+import java.awt.* ; 
+import java.awt.event.* ; 
+public class swing extends JApplet implements ActionListener { 
+JButton b1 ; 
+JTextField t1 ;  
+public void init () 
+{ 
+b1 = new JButton( "Click" ) ; 
+b1 .setBounds( 80 , 160 , 160 , 20 ) ; 
+t1 = new JTextField() ; 
+t1 .setBounds( 40 , 60 , 150 , 20 ) ; 
+add( t1 ) ; 
+add( b1 ) ; 
+b1 .addActionListener( this ) ; 
+setLayout( null ) ; 
+} 
+public void actionPerformed (ActionEvent e) 
+{ 
+t1 .setText( "HELLO" ) ; 
+} 
+} 
